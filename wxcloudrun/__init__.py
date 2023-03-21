@@ -22,5 +22,5 @@ from wxcloudrun import views
 
 # 加载配置
 app.config.from_object('config')
-# db.drop_all()
-# db.create_all()
+db.drop_all()
+db.create_all()
