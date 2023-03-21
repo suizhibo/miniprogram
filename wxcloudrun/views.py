@@ -88,7 +88,7 @@ def add_user():
     # 获取请求体参数
     params = request.get_json()
     user = User()
-    user.openid = params['openid']
+    user.openid = request.headers['X-WX-OPENID']
     user.nick_name = "low"
     user.name = params['name']
     user.school = params['school']
