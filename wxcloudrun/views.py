@@ -127,7 +127,7 @@ def get_user():
 
     if action == "id":
         try:
-            return make_succ_response(query_userbyid(params['id']))
+            return make_succ_response(query_userbyid(params['openid']))
         except Exception as ex:
             logging.info(ex)
             return make_err_response(ex)
@@ -141,7 +141,7 @@ def update_user():
 
     # 获取请求体参数
     params = request.get_json()
-    id = params['id']
+    id = params['openid']
     user = query_userbyid(id)
     user.nick_name = params['nick_name']
     user.name = params['name']
@@ -164,7 +164,7 @@ def add_order():
     # 获取请求体参数
     params = request.get_json()
     order = Order()
-    order.user_id = params['user_id']
+    order.user_id = params['user_openid']
     order.user_name = params['user_name']
     order.address_id = params['address_id']
     order.phone_number = params['phone_number']

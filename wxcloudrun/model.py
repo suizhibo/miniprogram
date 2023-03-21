@@ -21,8 +21,7 @@ class User(db.Model):
     __tablename__ = 'User'
 
     # 设定结构体对应表格的字段
-    id = db.Column(db.Integer, primary_key=True)
-    openid = db.Column(db.String(40), nullable=False)
+    openid = db.Column(db.String(40), nullable=False, primary_key=True)
     name = db.Column(db.String(15), nullable=False)
     nick_name = db.Column(db.String(15), nullable=False)
     school = db.Column(db.String(15))
@@ -48,7 +47,7 @@ class Order(db.Model):
     created_at = db.Column('createdAt', db.TIMESTAMP,
                            default=datetime.now())
 
-    user_id = db.Column(db.Integer(), db.ForeignKey('User.id'))
+    user_id = db.Column(db.Integer(), db.ForeignKey('User.openid'))
     address_id = db.Column(db.Integer(), db.ForeignKey('Address.id'))
 
 
@@ -65,4 +64,4 @@ class Address(db.Model):
     created_at = db.Column('createdAt', db.TIMESTAMP,
                            default=datetime.now())
 
-    user_id = db.Column(db.Integer(), db.ForeignKey('User.id'))
+    user_id = db.Column(db.Integer(), db.ForeignKey('User.openid'))
